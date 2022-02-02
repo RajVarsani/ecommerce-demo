@@ -1,12 +1,12 @@
 swagger: "2.0"
 info:
   version: 1.0.0
-  title: muxEmailTmp
+  title: ecommerce Demo
   description: My cool app
 basePath: /api/v1
 tags:
-  - name: Examples
-    description: Simple example endpoints
+  - name: Customer
+    description: customer endpoints
   - name: Specification
     description: The swagger API specification
 
@@ -15,57 +15,96 @@ consumes:
 produces:
   - application/json
 
-
 definitions:
-  ExampleBody:
+  CustomerBody:
     type: object
-    title: example
+    title: customer
     required:
+      - email
+      - acType
       - name
+      - address
+      - phone
+      - dob
     properties:
+      email:
+        type: string
+        description: customer email
+        example: test@testmail.co
+      acType:
+        type: string
+        description: customer account type
+        example: electronics
+        enum:
+          - electronics
+          - toys
       name:
         type: string
-        example: no_stress
+        description: customer name
+        example: "John Doe"
+      address:
+        type: string
+        description: customer address
+        example: "123 Main St"
+      phone:
+        type: string
+        description: customer phone number
+        example: "1234567890"
+      dob:
+        type: string
+        description: customer date of birth
+        example: "01/01/1990"
 
 paths:
-  /examples:
-    get:
-      tags:
-        - Examples
-      description: Fetch all examples
-      responses:
-        200:
-          description: Returns all examples
+  /customer:
     post:
       tags:
-        - Examples
-      description: Create a new example
+        - Customer
+      description: Create a new Customer
       parameters:
-        - name: example
+        - name: body
           in: body
-          description: an example
           required: true
-          schema: 
-            $ref: "#/definitions/ExampleBody"
+          schema:
+            $ref: "#/definitions/CustomerBody"
       responses:
         200:
-          description: Returns all examples
+          description: Returns customer created
+        422:
+          description: Invalid customer data provided
 
-  /examples/{id}:
     get:
       tags:
-        - Examples
+        - Customer
+      description: Fetch customers list according to the query
+      parameters:
+        - name: type
+          in: query
+          description: Account type of customers to fetch
+          required: true
+          type: string
+          enum:
+            - electronics
+            - toys
+      responses:
+        200:
+          description: Returns customers by account type
+
+  /customer/{id}:
+    get:
+      tags:
+        - Customer
       parameters:
         - name: id
           in: path
           required: true
-          description: The id of the example to retrieve
-          type: integer
+          description: The id of the customer to fetch
+          type: string
       responses:
         200:
-          description: Return the example with the specified id
+          description: Return the customer with the given id
         404:
-          description: Example not found
+          description: Customer with the given id not found
 
   /spec:
     get:
