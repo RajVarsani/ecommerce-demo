@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const Feild = new mongoose.Schema(
+const Field = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -17,4 +17,4 @@ const Feild = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Feild", Feild);
+export default mongoose.model("Field", Field);
