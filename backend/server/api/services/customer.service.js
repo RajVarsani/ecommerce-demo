@@ -14,7 +14,7 @@ class CustomerService {
 
   byId(id) {
     l.info(`${this.constructor.name}.byId(${id})`);
-    return Customer.findById("61fa21a4b43e24219cef1339");
+    return Customer.findById(id);
   }
 }
 
