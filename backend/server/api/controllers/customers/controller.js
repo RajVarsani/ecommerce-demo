@@ -24,6 +24,7 @@ export class Controller {
       const customers = await CustomerService.all(req.query.type);
       return res.json(customers);
     } catch (err) {
+      l.error(err.toString());
       return next(err);
     }
   }
