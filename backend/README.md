@@ -1,4 +1,4 @@
-# muxEmailTmp
+# ECommerce Demo
 
 My cool app
 
@@ -113,7 +113,7 @@ npm run lint
 Deploy to CloudFoundry
 
 ```shell
-cf push muxEmailTmp
+cf push eCommerceDemo
 ```
 
 
