@@ -6,7 +6,9 @@ info:
 basePath: /api/v1
 tags:
   - name: Customer
-    description: customer endpoints
+    description: Customer endpoints
+  - name: Field
+    description: Input field endpoints
   - name: Specification
     description: The swagger API specification
 
@@ -54,6 +56,21 @@ definitions:
         type: string
         description: customer date of birth
         example: "01/01/1990"
+  FieldBody:
+    type: object
+    title: field
+    required:
+      - name
+      - type
+    properties:
+      name:
+        type: string
+        description: field name
+        example: "name"
+      type:
+        type: string
+        description: field type
+        example: "text"
 
 paths:
   /customer:
@@ -105,6 +122,31 @@ paths:
           description: Return the customer with the given id
         404:
           description: Customer with the given id not found
+
+  /field:
+    post:
+      tags:
+        - Field
+      description: Create a new Field
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/FieldBody"
+      responses:
+        200:
+          description: Returns field created
+        422:
+          description: Invalid field data provided
+
+    get:
+      tags:
+        - Field
+      description: Fetch fields list
+      responses:
+        200:
+          description: Returns fields list
 
   /spec:
     get:
