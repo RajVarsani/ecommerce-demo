@@ -2,9 +2,32 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 8rem;
+  grid-gap: 5rem;
+}
+
+.TopSec {
+  padding-top: 1.5rem;
+}
+
+.Title {
+  font-size: var(--font-20);
+  font-weight: bold;
+  color: var(--primary-black);
+  -webkit-user-drag: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.Title span:first-child {
+  color: var(--primary-blue);
+}
+
+.BottomSec {
+  display: flex;
+  flex-direction: column;
   grid-gap: 0.7rem;
 }
+
 .Button {
   font-size: var(--font-16) !important;
   box-shadow: none !important;
