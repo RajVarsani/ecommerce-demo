@@ -1,24 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import {useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./Home.module.css";
 
-import Button from "../../Components/Button";
-
 const Home = () => {
-  
-  const exampleState = useSelector(state => state.example.exampleState);
-  
-  return (
-    <div className={styles.container}>
-      <h1>Home Component</h1>
-      
-      <span>Example State Value : {exampleState}</span>
-      
-      <Button title="Sample Button" />
-    </div>
-  );
+  const dispatch = useDispatch();
+  const popupStates = useSelector((state) => state.popupState);
+
+  useEffect(() => {
+    console.log(popupStates);
+  }, [popupStates]);
+
+  return <div className={styles.Wrapper}></div>;
 };
 
 export default Home;
