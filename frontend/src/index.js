@@ -30,9 +30,6 @@ const globalMUITheme = createTheme({
     primary: cssVarMUI("--primary-blue"),
     secondary: cssVarMUI("--dark-blue"),
     error: cssVarMUI("--red-primary"),
-    // primary: { main: "#108cff" },
-    // secondary: { main: "#0047ff" },
-    // error: { main: "#ff2b2b" },
   },
 });
 
