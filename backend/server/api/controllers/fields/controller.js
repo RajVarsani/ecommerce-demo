@@ -5,6 +5,7 @@ import { defaultFeildNames } from "./../staticData";
 class Controller {
   async create(req, res, next) {
     try {
+      req.body.name = req.body.name.toLowerCase();
       if (!defaultFeildNames.includes(req.body.name)) {
         const field = await FieldService.create(req.body);
         return res.json(field);

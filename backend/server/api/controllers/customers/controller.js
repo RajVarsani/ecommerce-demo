@@ -32,6 +32,10 @@ export class Controller {
   async byId(req, res) {
     try {
       const customer = await CustomerService.byId(req.params.id);
+      if (!customer) {
+        l.info(`Customer with id ${req.params.id} not found`);
+        return res.status(404).send({ message: "Customer not found" });
+      }
       return res.json(customer);
     } catch (err) {
       l.error(err.toString());
