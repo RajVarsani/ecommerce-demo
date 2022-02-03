@@ -29,7 +29,7 @@ export class Controller {
     }
   }
 
-  async byId(req, res) {
+  async byId(req, res, next) {
     try {
       const customer = await CustomerService.byId(req.params.id);
       if (!customer) {
@@ -39,7 +39,7 @@ export class Controller {
       return res.json(customer);
     } catch (err) {
       l.error(err.toString());
-      return res.status(404).send(err);
+      return next(err);
     }
   }
 }
