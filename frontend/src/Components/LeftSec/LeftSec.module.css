@@ -2,11 +2,11 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  grid-gap: 5rem;
+  grid-gap: 3rem;
 }
 
 .TopSec {
-  padding-top: 1.5rem;
+  padding-top: 1.2rem;
 }
 
 .Title {
@@ -31,4 +31,5 @@
 .Button {
   font-size: var(--font-16) !important;
   box-shadow: none !important;
+  text-transform: capitalize !important;
 }
