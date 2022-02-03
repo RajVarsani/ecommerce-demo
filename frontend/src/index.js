@@ -14,9 +14,25 @@ import { ConfigureStore } from "./Redux/ConfigureStore";
 
 const store = ConfigureStore();
 
+const cssVarMUI = (name) => {
+  return {
+    main: getComputedStyle(document.documentElement)
+      .getPropertyValue(name)
+      .trim(),
+  };
+};
+
 const globalMUITheme = createTheme({
   typography: {
     fontFamily: ["Manrope", "Roboto", "sans-serif"].join(","),
+  },
+  palette: {
+    primary: cssVarMUI("--primary-blue"),
+    secondary: cssVarMUI("--dark-blue"),
+    error: cssVarMUI("--red-primary"),
+    // primary: { main: "#108cff" },
+    // secondary: { main: "#0047ff" },
+    // error: { main: "#ff2b2b" },
   },
 });
 

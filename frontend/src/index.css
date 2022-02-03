@@ -53,7 +53,21 @@ input {
   --fontv-3: 3vw;
   --fontv-35: 3.5vw;
 
+  --max-width : 120rem;
+
   /* Color styles */
+  --white: #ffffff;
+  --pure-black: #000000;
+  --primary-black: #222222;
+  --sec-black: #444444;
+  --ter-black: #888888;
+  --grey-light: #eeeeee;
+  --sec-grey: #c4c4c4;
+  --primary-blue: #007df1;
+  --dark-blue: #0047ff;
+  --bg-blue: rgb(246, 248, 255);
+  --red-primary: #ff2b2b;
+  --red-bg: #ffecec;
 }
 
 html::-webkit-scrollbar {
