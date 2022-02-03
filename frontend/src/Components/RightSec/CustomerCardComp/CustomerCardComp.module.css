@@ -1,0 +1,44 @@
+.Wrapper {
+  width: 100%;
+  padding: 1.3rem 1.8rem;
+  outline: 1px solid var(--sec-grey);
+  border-radius: 0.5rem;
+  transition: outline 0.2s ease-out, background 0.3s ease-out;
+}
+
+.Wrapper:focus-within,
+.Wrapper:hover {
+  outline: 1px solid var(--primary-blue);
+  background: var(--bg-blue);
+}
+.Wrapper a:focus {
+  outline: none;
+  border: none;
+}
+
+.Name {
+  font-size: var(--font-20);
+  color: var(--sec-black);
+  margin-bottom: 0.7rem;
+}
+
+.BottomSec {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.1rem;
+}
+
+.KeyValuePair {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  font-size: var(--font-14);
+  color: var(--ter-black);
+  /* grid-gap: 1rem; */
+  font-weight: 500;
+}
+
+.Key {
+  font-weight: 600;
+  color: var(--sec-black);
+  text-transform: capitalize;
+}

@@ -1,0 +1,26 @@
+.Wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: 2rem;
+}
+
+.Tabs {
+  --font-size-var-locale: var(--font-16);
+}
+
+.ProgressBarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.BottomSec {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+}
