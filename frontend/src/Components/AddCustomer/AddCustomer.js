@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, MenuItem, Select } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import styles from "./AddCustomer.module.css";
 
@@ -11,11 +11,32 @@ import { StyledMUIInput } from "./../../Utils/Helpers/styledMUIInput";
 import { addCustomer } from "./../../Services/customer.service";
 import notify from "./../../Utils/Helpers/notifyToast";
 import { UPDATE_CUSTOMER_LIST_TYPE } from "../../Redux/ActionTypes";
+import { MUIStyledCircularProgress } from "./../RightSec/helpers/MUIStyledCircularProgress";
+import { getAllFields } from "./../../Services/field.service";
 
 function AddCustomer() {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const customersState = useSelector((state) => state.customersState);
+
+  const [externalFields, setExternalFields] = React.useState(null);
+
+  useEffect(() => {
+    if (location.pathname === "/addcustomer") {
+      fetchAndSetExternalFields();
+    }
+  }, [location.pathname]);
+
+  const fetchAndSetExternalFields = async () => {
+    setExternalFields(null);
+    try {
+      const feilds = await getAllFields();
+      setExternalFields(feilds);
+    } catch (err) {
+      notify(err.message, "error");
+    }
+  };
 
   const [acType, setAcType] = React.useState(
     addCustomerComponentData.acTypes[0]
@@ -96,6 +117,25 @@ function AddCustomer() {
             />
           );
         })}
+        {externalFields ? (
+          externalFields.map((field, index) => {
+            return (
+              <StyledMUIInput
+                autoComplete="off"
+                variant="standard"
+                key={index}
+                label={field.name}
+                type={field.type}
+                name={field.name}
+                required={true}
+              />
+            );
+          })
+        ) : (
+          <div className={styles.ProgressBarWrapper}>
+            <MUIStyledCircularProgress />
+          </div>
+        )}
         <Button
           type="submit"
           variant="contained"

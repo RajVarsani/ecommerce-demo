@@ -1,5 +1,5 @@
 .Wrapper {
-  width: 40rem;
+  width: 42rem;
   max-height: 80vh;
   background: var(--white);
   padding: 3rem 3rem;
@@ -8,6 +8,12 @@
   align-items: center;
   grid-gap: 2.5rem;
   border-radius: 0.8rem;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.Wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .ProgressBarWrapper {
@@ -15,7 +21,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  min-height: 15rem;
+  min-height: 10rem;
 }
 
 .Title {
@@ -39,5 +45,5 @@
   font-size: var(--font-16) !important;
   box-shadow: none !important;
   text-transform: capitalize;
-  margin-top: 1rem;
+  margin-top: 1.5rem !important;
 }
