@@ -33,3 +33,13 @@
   box-shadow: none !important;
   text-transform: capitalize !important;
 }
+
+@media only screen and (max-width: 500px) {
+  .Wrapper {
+    flex-direction: column;
+    grid-gap: 1.5rem;
+  }
+  .TopSec {
+    padding-top: 1.5rem;
+  }
+}

@@ -37,10 +37,34 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  grid-gap: 1rem;
 }
 
 .Key {
   text-transform: capitalize;
   color: var(--sec-black);
   font-weight: 600;
+}
+.Value {
+  text-align: end;
+}
+
+.Key,
+.Value {
+  white-space: pre-line;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: clip;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@media only screen and (max-width: 500px) {
+  .Wrapper {
+    width: 93vw;
+    padding: calc(1rem + 4vw);
+    grid-gap: calc(3vw + 1.5rem);
+  }
 }

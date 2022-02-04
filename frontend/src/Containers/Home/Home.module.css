@@ -1,11 +1,10 @@
 .Wrapper {
-  width: 100%;
   min-height: 100vh;
-  display: flex;
-  position: relative;
   width: var(--max-width);
+  position: relative;
+  display: flex;
   margin: 0 auto;
-  grid-gap: 5rem;
+  grid-gap: 4rem;
 }
 
 .LeftSec {
@@ -14,4 +13,29 @@
 
 .RightSec {
   width: 100%;
+}
+
+@media only screen and (max-width: 1160px) {
+  .Wrapper {
+    width: calc(100vw - 6rem);
+    grid-gap: 3rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Wrapper {
+    width: calc(100vw - 4rem);
+    grid-gap: 2rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .Wrapper {
+    flex-direction: column;
+    width: calc(93vw);
+    grid-gap: 3vw;
+  }
+  .LeftSec {
+    width: 100%;
+  }
 }

@@ -41,3 +41,10 @@
   text-transform: capitalize !important;
   margin-top: 1.2rem !important;
 }
+
+@media only screen and (max-width: 500px) {
+  .Wrapper {
+    width: 93vw;
+    padding: calc(1rem + 4vw);
+  }
+}
