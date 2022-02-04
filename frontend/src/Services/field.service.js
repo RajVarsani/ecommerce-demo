@@ -13,3 +13,15 @@ export const getAllFields = async () => {
     throw err;
   }
 };
+
+export const addField = async (bodyData) => {
+  if (!bodyData) {
+    throw new Error("data is required");
+  }
+  try {
+    const { data } = await axios.post(`${ADD_FIELD_URL}`, bodyData);
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};

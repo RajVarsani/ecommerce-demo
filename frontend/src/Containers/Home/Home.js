@@ -7,14 +7,11 @@ import RightSec from "../../Components/RightSec";
 import PopUp from "./../../Components/_General/PopUp/index";
 import CustomerDetails from "./../../Components/CustomerDetails/index";
 import AddCustomer from "./../../Components/AddCustomer/index";
+import AddField from "./../../Components/AddField/AddField";
 
 const Home = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location.pathname]);
 
   const closePopUp = () => {
     navigate("/");
@@ -38,6 +35,13 @@ const Home = () => {
       <PopUp
         isOpen={location.pathname.split("/")[1] === "addcustomer"}
         ContentComp={<AddCustomer />}
+        isClosable={true}
+        closeFun={closePopUp}
+        withBorder={false}
+      />
+      <PopUp
+        isOpen={location.pathname.split("/")[1] === "addfield"}
+        ContentComp={<AddField />}
         isClosable={true}
         closeFun={closePopUp}
         withBorder={false}

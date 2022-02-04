@@ -64,7 +64,15 @@ function AddCustomer() {
       e.target.reset();
       navigate("/");
     } catch (err) {
-      notify(err.message, "error");
+      if (err.response?.data) {
+        if (err.response.data.message) {
+          notify(err.response.data.message, "error");
+        } else {
+          notify(err.response.data, "error");
+        }
+      } else {
+        notify(err.message, "error");
+      }
     }
   };
 
@@ -128,6 +136,11 @@ function AddCustomer() {
                 type={field.type}
                 name={field.name}
                 required={true}
+                defaultValue={
+                  field.type === "date"
+                    ? new Date().toISOString().substring(0, 10)
+                    : ""
+                }
               />
             );
           })

@@ -52,3 +52,20 @@ export const addCustomerComponentData = {
     },
   ],
 };
+
+export const addFieldComponentData = {
+  title: "Add Field",
+  buttons: {
+    addField: "Add Field",
+  },
+  fields: [
+    {
+      name: "name",
+      type: "text",
+    },
+    {
+      name: "type",
+      type: "text",
+    },
+  ],
+};

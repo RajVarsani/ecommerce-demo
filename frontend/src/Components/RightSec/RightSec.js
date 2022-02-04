@@ -35,7 +35,6 @@ function RightSec() {
         const data = await getCustmersData(
           rightSecData.tabs[customersState.listTypeIndex]
         );
-        console.log(data);
         dispatch({
           type: UPDATE_CUSTOMER_LIST,
           payload: data,
