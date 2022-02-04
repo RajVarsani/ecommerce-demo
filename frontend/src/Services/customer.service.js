@@ -1,5 +1,8 @@
 import axios from "axios";
-import { GET_CUSTOMERS_DATA_URL } from "../Utils/Constants/ApiConstants";
+import {
+  GET_CUSTOMERS_DATA_URL,
+  GET_CUSTOMER_DATA_BY_ID_URL,
+} from "../Utils/Constants/ApiConstants";
 import { rightSecData } from "../Utils/Constants/StaticData";
 
 export const getCustmersData = async (type) => {
@@ -11,6 +14,18 @@ export const getCustmersData = async (type) => {
   }
   try {
     const { data } = await axios.get(`${GET_CUSTOMERS_DATA_URL}?type=${type}`);
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const getCustomerDataById = async (id) => {
+  if (!id) {
+    throw new Error("id is required");
+  }
+  try {
+    const { data } = await axios.get(`${GET_CUSTOMER_DATA_BY_ID_URL}${id}`);
     return data;
   } catch (err) {
     throw err;

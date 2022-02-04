@@ -1,18 +1,23 @@
 import React, { useEffect } from "react";
-
-import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import styles from "./Home.module.css";
 import LeftSec from "./../../Components/LeftSec/index";
 import RightSec from "../../Components/RightSec";
+import PopUp from "./../../Components/_General/PopUp/index";
+import CustomerDetails from "./../../Components/CustomerDetails/index";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const popupStates = useSelector((state) => state.popupState);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(popupStates);
-  }, [popupStates]);
+    console.log(location.pathname);
+  }, [location.pathname]);
+
+  const closePopUp = () => {
+    navigate("/");
+  };
 
   return (
     <div className={styles.Wrapper}>
@@ -22,6 +27,13 @@ const Home = () => {
       <div className={styles.RightSec}>
         <RightSec />
       </div>
+      <PopUp
+        isOpen={location.pathname.split("/")[1] === "customer"}
+        ContentComp={<CustomerDetails />}
+        isClosable={true}
+        closeFun={closePopUp}
+        withBorder={false}
+      />
     </div>
   );
 };

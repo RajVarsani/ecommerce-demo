@@ -1,33 +1,48 @@
 import React, { useEffect } from "react";
 import Tabs from "@mui/material/Tabs";
+import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./RightSec.module.css";
 
 import { rightSecData } from "../../Utils/Constants/StaticData";
+import {
+  UPDATE_CUSTOMER_LIST_TYPE,
+  UPDATE_CUSTOMER_LIST,
+} from "../../Redux/ActionTypes";
 
 import { getCustmersData } from "./../../Services/customer.service";
 import notify from "./../../Utils/Helpers/notifyToast";
 
 import { MUIStyledTab } from "./helpers/MUIStyledTab";
 import { MUIStyledCircularProgress } from "./helpers/MUIStyledCircularProgress";
-import CustomerCardComp from './CustomerCardComp/index';
+import CustomerCardComp from "./CustomerCardComp/index";
 
 function RightSec() {
-  const [currentTab, setCurrentTab] = React.useState(0);
-  const [customerList, setCustomerList] = React.useState(null);
+  const dispatch = useDispatch();
+  const customersState = useSelector((state) => state.customersState);
 
   useEffect(async () => {
     fetchAndSetCustomerList();
-  }, [currentTab]);
+  }, [customersState.listTypeIndex]);
 
   const fetchAndSetCustomerList = async () => {
-    setCustomerList(null);
-    try {
-      const data = await getCustmersData(rightSecData.tabs[currentTab]);
-      console.log(data);
-      setCustomerList(data);
-    } catch (err) {
-      notify(err.message, "error");
+    if (customersState.listTypeIndex !== null) {
+      dispatch({
+        type: UPDATE_CUSTOMER_LIST,
+        payload: null,
+      });
+      try {
+        const data = await getCustmersData(
+          rightSecData.tabs[customersState.listTypeIndex]
+        );
+        console.log(data);
+        dispatch({
+          type: UPDATE_CUSTOMER_LIST,
+          payload: data,
+        });
+      } catch (err) {
+        notify(err.message, "error");
+      }
     }
   };
 
@@ -35,9 +50,12 @@ function RightSec() {
     <div className={styles.Wrapper}>
       <div className={styles.TopSec}>
         <Tabs
-          value={currentTab}
+          value={customersState.listTypeIndex}
           onChange={(event, newValue) => {
-            setCurrentTab(newValue);
+            dispatch({
+              type: UPDATE_CUSTOMER_LIST_TYPE,
+              payload: newValue,
+            });
           }}
           className={styles.Tabs}
         >
@@ -45,9 +63,9 @@ function RightSec() {
           <MUIStyledTab label={rightSecData.tabs[1]} />
         </Tabs>
       </div>
-      {customerList ? (
+      {customersState.list ? (
         <div className={styles.BottomSec}>
-          {customerList.map((customer, index) => {
+          {customersState.list.map((customer, index) => {
             return (
               <div className={styles.CustomerCard} key={index}>
                 <CustomerCardComp customer={customer} />

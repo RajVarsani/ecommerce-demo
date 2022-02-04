@@ -15,3 +15,10 @@ export const rightSecData = {
     dob: "date of birth",
   },
 };
+
+export const customerDetailsComponentData = {
+  title: "Customer Details",
+  keyLables: {
+    acType: "Account Type",
+  },
+};
