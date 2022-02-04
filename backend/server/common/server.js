@@ -15,6 +15,8 @@ const app = new Express();
 
 export default class ExpressServer {
   constructor() {
+    app.use(cors());
+
     const root = path.normalize(`${__dirname}/../..`);
 
     app.use(bodyParser.json({ limit: process.env.REQUEST_LIMIT || "100kb" }));
@@ -27,8 +29,6 @@ export default class ExpressServer {
     app.use(bodyParser.text({ limit: process.env.REQUEST_LIMIT || "100kb" }));
 
     app.use(Express.static(`${root}/public`));
-
-    app.use(cors());
   }
 
   router(routes) {
