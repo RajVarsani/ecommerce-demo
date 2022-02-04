@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   GET_CUSTOMERS_DATA_URL,
   GET_CUSTOMER_DATA_BY_ID_URL,
+  ADD_CUSTOMER_URL,
 } from "../Utils/Constants/ApiConstants";
 import { rightSecData } from "../Utils/Constants/StaticData";
 
@@ -26,6 +27,18 @@ export const getCustomerDataById = async (id) => {
   }
   try {
     const { data } = await axios.get(`${GET_CUSTOMER_DATA_BY_ID_URL}${id}`);
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const addCustomer = async (bodyData) => {
+  if (!bodyData) {
+    throw new Error("data is required");
+  }
+  try {
+    const { data } = await axios.post(`${ADD_CUSTOMER_URL}`, bodyData);
     return data;
   } catch (err) {
     throw err;

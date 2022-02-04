@@ -4,6 +4,7 @@ import { TextField } from "@mui/material";
 export const StyledMUIInput = styled(TextField)({
   "& label": {
     fontSize: "var(--font-16)",
+    textTransform: "capitalize",
     fontWeight: 400,
     color: "var(--ter-black)",
   },

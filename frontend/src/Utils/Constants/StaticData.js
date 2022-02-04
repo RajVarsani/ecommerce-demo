@@ -22,3 +22,33 @@ export const customerDetailsComponentData = {
     acType: "Account Type",
   },
 };
+
+export const addCustomerComponentData = {
+  title: "Add Customer",
+  acTypes: ["electronics", "toys"],
+  buttons: {
+    addCustomer: "Add Customer",
+  },
+  fields: [
+    {
+      name: "email",
+      type: "email",
+    },
+    {
+      name: "name",
+      type: "text",
+    },
+    {
+      name: "address",
+      type: "text",
+    },
+    {
+      name: "phone",
+      type: "number",
+    },
+    {
+      name: "dob",
+      type: "date",
+    },
+  ],
+};

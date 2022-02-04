@@ -6,6 +6,7 @@ import LeftSec from "./../../Components/LeftSec/index";
 import RightSec from "../../Components/RightSec";
 import PopUp from "./../../Components/_General/PopUp/index";
 import CustomerDetails from "./../../Components/CustomerDetails/index";
+import AddCustomer from "./../../Components/AddCustomer/index";
 
 const Home = () => {
   const location = useLocation();
@@ -30,6 +31,13 @@ const Home = () => {
       <PopUp
         isOpen={location.pathname.split("/")[1] === "customer"}
         ContentComp={<CustomerDetails />}
+        isClosable={true}
+        closeFun={closePopUp}
+        withBorder={false}
+      />
+      <PopUp
+        isOpen={location.pathname.split("/")[1] === "addcustomer"}
+        ContentComp={<AddCustomer />}
         isClosable={true}
         closeFun={closePopUp}
         withBorder={false}
