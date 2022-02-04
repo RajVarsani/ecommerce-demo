@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from "redux";
 
-import { popupState } from "./Reducers/popupState.reducer";
+import { customersState } from "./Reducers/customers.reducer";
 
 export const ConfigureStore = () => {
-  const store = createStore(combineReducers({ popupState }));
+  const store = createStore(combineReducers({ customersState }));
 
   return store;
 };
