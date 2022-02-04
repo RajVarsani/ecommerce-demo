@@ -35,7 +35,7 @@ $ git clone https://github.com/rajvarsani/ecommerce-demo
 ### Backend
 
 
-```shell
+```sh
 # Go to the backend directory
 $ cd backend
 
@@ -60,5 +60,5 @@ $ npm i
 # Start the project in development mode
 $ npm start
 
-# Open http://localhost:3000 to view the API documentation.
+# Go to http://localhost:3000 to view the website.
 ```
